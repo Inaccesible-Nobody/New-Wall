@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Desktop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Styles/theme.css" />
+  <link rel="stylesheet" href="Styles/base.css" />
+  <link rel="stylesheet" href="Styles/widgets.css" />
+</head>
+<body>
+  <div class="ambient-scene" aria-hidden="true">
+    <div class="ambient-glow"></div>
+    <div class="window-light-beam"></div>
+  </div>
+
+  <button class="settings-btn" id="settingsBtn" aria-label="Settings" title="Settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="3"></circle>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+    </svg>
+  </button>
+
+  <main class="desktop-grid">
+    <section class="column column-left" aria-label="Personal widgets">
+      <article class="glass-card widget-clock">
+        <div class="widget-eyebrow" id="clockDate">--</div>
+        <div class="clock-time mono" id="clockTime">--:--</div>
+        <div class="clock-reminder">
+          <span id="clockReminderText" title="Click to edit reminder">Take a break.</span>
+          <span class="spark-icon" aria-hidden="true">&#10033;</span>
+        </div>
+      </article>
+
+      <article class="glass-card widget-todo">
+        <header class="widget-header">
+          <h2 class="widget-title">TO-DO</h2>
+          <button class="icon-btn" id="todoAddTrigger" aria-label="Add task" title="Add task">+</button>
+        </header>
+        <ul class="todo-list" id="todoList"></ul>
+        <div class="todo-input-row">
+          <span class="plus-muted" aria-hidden="true">+</span>
+          <input type="text" id="todoInput" placeholder="Add a task and press Enter..." autocomplete="off" />
+        </div>
+      </article>
+
+      <article class="glass-card widget-morse">
+        <header class="widget-header">
+          <h2 class="widget-title">MORSE STATION</h2>
+          <div class="morse-meta">
+            <span class="status-badge">
+              <span class="status-dot" id="morseStatusDot"></span>
+              <span id="morseStatusText">LISTENING</span>
+            </span>
+            <button class="icon-btn help-btn" id="morseHelpBtn" aria-label="Morse code help" title="Morse code help">?</button>
+          </div>
+        </header>
+        <div class="morse-stream mono" id="morseStream"></div>
+        <div class="morse-decoded" id="morseDecoded" aria-live="polite"></div>
+      </article>
+    </section>
+
+    <section class="column column-center" aria-label="Window and audio visualizer">
+      <div class="airplane-window-shell" id="airplaneWindow">
+        <div class="window-bezel-outer">
+          <div class="window-bezel-inner">
+            <div class="window-viewport">
+              <div class="sky-layer sky-night"><div class="night-horizon"></div></div>
+              <div class="sky-layer sky-day"><div class="day-clouds"></div></div>
+              <div class="window-glass-glare"></div>
+              <div class="window-shutter" id="windowShutter" role="slider" aria-label="Window light" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+                <div class="shutter-ribs"></div>
+                <div class="shutter-handle-bar"><div class="shutter-handle-groove"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="visualizer-stage">
+        <canvas id="audioVisualizer" aria-label="Audio visualizer"></canvas>
+      </div>
+    </section>
+
+    <section class="column column-right" aria-label="Music and drawing widgets">
+      <article class="glass-card widget-spotify">
+        <div class="spotify-top">
+          <div class="album-art" aria-hidden="true"></div>
+          <div class="track-info">
+            <div class="track-title">Now playing</div>
+            <div class="track-artist">Connect Spotify to begin</div>
+            <div class="progress-bar" id="spotifyProgressBar" role="progressbar" aria-label="Track progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-fill" id="spotifyProgressFill" style="width: 0%"></div>
+            </div>
+            <div class="progress-times"><span>0:00</span><span>0:00</span></div>
+          </div>
+        </div>
+        <div class="spotify-controls">
+          <button class="ctrl-btn" aria-label="Previous track" type="button">&#9198;</button>
+          <button class="ctrl-btn ctrl-play" id="spPlay" aria-label="Play" type="button">&#9654;</button>
+          <button class="ctrl-btn" aria-label="Next track" type="button">&#9197;</button>
+        </div>
+      </article>
+
+      <article class="glass-card widget-doodle" id="doodleWidget">
+        <header class="widget-header">
+          <h2 class="widget-title">DOODLE PAD</h2>
+          <div class="doodle-tools">
+            <button class="icon-btn is-active" id="doodlePen" aria-label="Pen" title="Pen">&#9998;</button>
+            <button class="icon-btn" id="doodleEraser" aria-label="Eraser" title="Eraser">&#9003;</button>
+            <button class="icon-btn" id="doodleExpand" aria-label="Expand doodle pad" title="Expand">&#10530;</button>
+            <button class="icon-btn" id="doodleClear" aria-label="Clear doodle" title="Clear">×</button>
+          </div>
+        </header>
+        <div class="doodle-canvas-wrap">
+          <canvas class="doodle-canvas" id="doodleCanvas" aria-label="Drawing area"></canvas>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="morseModal" hidden>
+    <section class="glass-card modal-panel" role="dialog" aria-modal="true" aria-labelledby="morseModalTitle">
+      <header class="widget-header">
+        <h2 class="widget-title" id="morseModalTitle">MORSE CODE</h2>
+        <button class="icon-btn" id="morseModalClose" aria-label="Close">&times;</button>
+      </header>
+      <p class="modal-hint">Press J for a dot and K for a dash. Pause between letters to decode.</p>
+      <div class="morse-legend-grid" id="morseLegendGrid"></div>
+    </section>
+  </div>
+
+  <div class="modal-backdrop" id="settingsModal" hidden>
+    <section class="glass-card modal-panel settings-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <header class="widget-header">
+        <h2 class="widget-title" id="settingsTitle">SETTINGS</h2>
+        <button class="icon-btn" id="settingsClose" aria-label="Close settings">&times;</button>
+      </header>
+      <label class="setting-row">
+        <span>24-hour clock</span>
+        <input type="checkbox" id="setting24h" />
+      </label>
+      <label class="setting-row setting-col">
+        <span>Morse speed: <span id="settingWpmVal">9</span> WPM</span>
+        <input type="range" id="settingWpm" min="5" max="25" value="9" />
+      </label>
+      <label class="setting-row">
+        <span>Mute Morse tones</span>
+        <input type="checkbox" id="settingMorseMute" />
+      </label>
+      <label class="setting-row setting-col">
+        <span>Clock reminder</span>
+        <input class="setting-text-input" type="text" id="settingReminder" maxlength="80" />
+      </label>
+    </section>
+  </div>
+
+  <script src="Scripts/window-control.js"></script>
+  <script src="Scripts/clock.js"></script>
+  <script src="Scripts/todo.js"></script>
+  <script src="Scripts/morse.js"></script>
+  <script src="Scripts/doodle.js"></script>
+  <script src="Scripts/audio.js"></script>
+  <script src="Scripts/settings.js"></script>
+</body>
+</html>

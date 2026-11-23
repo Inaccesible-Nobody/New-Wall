@@ -1,0 +1,27 @@
+:root {
+  --open: 0;
+  --accent: #3b82f6;
+  --accent-bright: #60a5fa;
+  --accent-glow: rgba(59, 130, 246, 0.45);
+
+  --bg-top: rgb(5, 8, 17);
+  --bg-bottom: rgb(9, 18, 36);
+
+  --text-primary: rgb(230, 237, 247);
+  --text-secondary: rgb(143, 163, 191);
+  --text-muted: rgb(86, 104, 130);
+
+  --glass-bg: rgba(13, 20, 36, 0.62);
+  --glass-border: rgba(148, 185, 255, 0.18);
+  --glass-highlight: rgba(148, 185, 255, 0.25);
+  --glass-shadow: rgba(0, 0, 0, 0.55);
+
+  --frame-outer-1: rgb(40, 54, 82);
+  --frame-outer-2: rgb(10, 16, 29);
+  --frame-inner-1: rgb(24, 35, 56);
+  --frame-inner-2: rgb(5, 8, 16);
+
+  --shutter-top: rgb(22, 32, 51);
+  --shutter-bottom: rgb(12, 19, 34);
+  --shutter-rib: rgba(255, 255, 255, 0.05);
+}

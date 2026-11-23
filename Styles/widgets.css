@@ -1,0 +1,475 @@
+/* 1. CLOCK */
+.clock-time {
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 6px 0 14px;
+}
+
+.clock-reminder {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding-top: 10px;
+  border-top: 1px solid var(--glass-border);
+}
+
+#clockReminderText {
+  cursor: pointer;
+}
+
+.spark-icon {
+  color: var(--accent);
+  font-size: 12px;
+}
+
+/* 2. TO-DO */
+.widget-todo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 190px;
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--text-primary);
+}
+
+.todo-check {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-muted);
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: transparent;
+  color: transparent;
+}
+
+.todo-item.is-done .todo-check {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.todo-text {
+  flex: 1;
+  cursor: pointer;
+  word-break: break-word;
+}
+
+.todo-item.is-done .todo-text {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.todo-del {
+  opacity: 0;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 5px;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.todo-item:hover .todo-del {
+  opacity: 1;
+}
+
+.todo-del:hover {
+  color: #ef4444;
+}
+
+.todo-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.plus-muted {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.todo-input-row input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.todo-input-row input::placeholder {
+  color: var(--text-muted);
+}
+
+/* 3. MORSE STATION */
+.morse-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.status-dot.is-paused {
+  background: var(--text-muted);
+  box-shadow: none;
+}
+
+.status-dot.is-tx {
+  background: #60a5fa;
+  transform: scale(1.45);
+  box-shadow: 0 0 14px #60a5fa;
+}
+
+.help-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  font-size: 11px;
+}
+
+.morse-stream {
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--accent-bright);
+  min-height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.morse-placeholder {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.morse-decoded {
+  margin-top: 6px;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  min-height: 18px;
+  word-break: break-all;
+}
+
+/* 4. 3D BOEING 787 AIRPLANE WINDOW */
+.airplane-window-shell {
+  position: relative;
+  width: 240px;
+  height: 345px;
+  filter: drop-shadow(0 28px 46px var(--glass-shadow));
+}
+
+.window-bezel-outer {
+  width: 100%;
+  height: 100%;
+  border-radius: 102px;
+  padding: 14px;
+  background: linear-gradient(155deg, var(--frame-outer-1) 0%, var(--frame-outer-2) 100%);
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.35),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.window-bezel-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 88px;
+  padding: 12px;
+  background: linear-gradient(145deg, var(--frame-inner-2) 0%, var(--frame-inner-1) 100%);
+  box-shadow:
+    inset 0 8px 18px rgba(0, 0, 0, 0.55),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.18);
+}
+
+.window-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 76px;
+  overflow: hidden;
+  background: #040814;
+  box-shadow: inset 0 10px 24px rgba(0, 0, 0, 0.65);
+}
+
+.sky-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sky-night {
+  background: linear-gradient(180deg, #030714 0%, #0b1b3d 62%, #1d4ed8 100%);
+}
+
+.night-horizon {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 38%;
+  background: radial-gradient(ellipse 90% 70% at 50% 100%, rgba(96, 165, 250, 0.65), transparent 72%);
+}
+
+.sky-day {
+  opacity: var(--open);
+  background: linear-gradient(180deg, #3b82f6 0%, #7dd3fc 58%, #e0f2fe 100%);
+}
+
+.day-clouds {
+  position: absolute;
+  inset: auto -20% -8% -20%;
+  height: 46%;
+  background:
+    radial-gradient(ellipse 45% 40% at 25% 80%, rgba(255, 255, 255, 0.95), transparent 70%),
+    radial-gradient(ellipse 55% 48% at 62% 72%, rgba(255, 255, 255, 0.98), transparent 72%),
+    radial-gradient(ellipse 40% 36% at 88% 84%, rgba(241, 245, 249, 0.9), transparent 70%);
+  filter: blur(4px);
+}
+
+.window-glass-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    transparent 38%,
+    transparent 78%,
+    rgba(147, 197, 253, 0.14) 100%
+  );
+  z-index: 2;
+}
+
+.window-shutter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 88%;
+  z-index: 3;
+  cursor: grab;
+  touch-action: none;
+  transform: translateY(calc(var(--open) * -86%));
+  background: linear-gradient(180deg, var(--shutter-top) 0%, var(--shutter-bottom) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.window-shutter:active {
+  cursor: grabbing;
+}
+
+.shutter-ribs {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 7px,
+    var(--shutter-rib) 7px,
+    var(--shutter-rib) 8px
+  );
+  pointer-events: none;
+}
+
+.shutter-handle-bar {
+  position: relative;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.16));
+}
+
+.shutter-handle-groove {
+  width: 58px;
+  height: 6px;
+  border-radius: 99px;
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+/* 5. UNBOXED AUDIO VISUALIZER */
+.visualizer-stage {
+  width: min(460px, 100%);
+  height: 84px;
+}
+
+#audioVisualizer {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 6. SPOTIFY PLAYER */
+.spotify-top {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.album-art {
+  width: 68px;
+  height: 68px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #0f172a, #1d4ed8 60%, #60a5fa);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.track-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.track-title {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 2px 0 10px;
+}
+
+.progress-bar {
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(148, 163, 184, 0.28);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 99px;
+}
+
+.progress-times {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 5px;
+}
+
+.spotify-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 0 6px;
+}
+
+.ctrl-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.ctrl-btn:hover {
+  color: var(--text-primary);
+  transform: scale(1.08);
+}
+
+.ctrl-play {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(59, 130, 246, 0.14);
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+/* 7. DOODLE PAD */
+.widget-doodle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 210px;
+  transition: inset 0.2s ease;
+}
+
+.widget-doodle.is-expanded {
+  position: fixed;
+  inset: 42px;
+  z-index: 50;
+}
+
+.doodle-tools {
+  display: flex;
+  gap: 4px;
+}
+
+.doodle-canvas-wrap {
+  flex: 1;
+  min-height: 140px;
+  position: relative;
+}
+
+.doodle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  cursor: crosshair;
+  touch-action: none;
+}
